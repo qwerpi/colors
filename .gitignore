@@ -1,0 +1,15 @@
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# Image Files #
+*.png
+*.jpg
+*.jpeg
+*.gif
+
+# Makefile #
+Makefile
