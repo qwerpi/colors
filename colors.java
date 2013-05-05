@@ -15,7 +15,7 @@ import java.util.TreeMap;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
-public class prgm {
+public class colors {
 
 	public static void main(String[] args) {
 		if (args.length < 1) {
