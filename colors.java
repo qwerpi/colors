@@ -93,6 +93,7 @@ public class colors {
 		}
 
 		JFrame frame = new JFrame("color!");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.add(new blah(entries));
 		frame.pack();
 		frame.setVisible(true);
