@@ -15,7 +15,7 @@ import java.util.TreeMap;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
-public class colors {
+public class prgm {
 
 	public static void main(String[] args) {
 		if (args.length < 1) {
@@ -75,38 +75,24 @@ public class colors {
 			}
 
 			public void paint(Graphics2D g) {
-				g.scale(((double) this.getWidth()) / ((double) allColors.length), this.getHeight());
-				for (int i = 0; i < allColors.length; i++) {
-					g.setColor(new Color(allColors[i], true));
-					g.fillRect(i, 0, 1, 1);
+				if (img == null) {
+					img = new BufferedImage(allColors.length, 1, BufferedImage.TYPE_INT_ARGB);
+					Graphics imgG = img.getGraphics();
+					for (int i = 0; i < allColors.length; i++) {
+						imgG.setColor(new Color(allColors[i], true));
+						imgG.fillRect(i, 0, 1, 1);
+					}
 				}
+				g.scale(((double) this.getWidth()) / ((double) allColors.length), this.getHeight());
+				g.drawImage(img, 0, 0, null);
 			}
 
 			public void paint(Graphics g) {
 				paint((Graphics2D) g);
 			}
-
-			public void update(Graphics g) {
-				Graphics offgc;
-				Image offscreen = null;
-				Dimension d = getSize();
-
-				// create the offscreen buffer and associated Graphics
-				offscreen = createImage(d.width, d.height);
-				offgc = offscreen.getGraphics();
-				// clear the exposed area
-				offgc.setColor(getBackground());
-				offgc.fillRect(0, 0, d.width, d.height);
-				offgc.setColor(getForeground());
-				// do normal redraw
-				paint(offgc);
-				// transfer offscreen to window
-				g.drawImage(offscreen, 0, 0, this);
-			}
 		}
 
 		JFrame frame = new JFrame("color!");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.add(new blah(entries));
 		frame.pack();
 		frame.setVisible(true);
