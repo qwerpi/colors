@@ -23,7 +23,7 @@ public class colors {
 			System.exit(1);
 		}
 		try {
-			doThatThing(args[0]);
+			viewColors(args[0]);
 		} catch (Exception ex) {
 			System.out.println("Error!");
 			ex.printStackTrace();
@@ -31,7 +31,7 @@ public class colors {
 		}
 	}
 	
-	public static void doThatThing(String filename) throws Exception {
+	public static void viewColors(String filename) throws Exception {
 		BufferedImage img = ImageIO.read(new File(filename));
 		TreeMap<Integer, Integer> counts = new TreeMap<Integer, Integer>();
 		for (int i = 0; i < img.getWidth(); i++) {
